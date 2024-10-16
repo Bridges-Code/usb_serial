@@ -1,6 +1,8 @@
-library usb_serial;
-
 import 'dart:io';
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'usb_serial.freezed.dart';
 
 class UsbSerial {
   /// Returns a list of connected USB serial devices.
@@ -18,9 +20,10 @@ class UsbSerial {
   }
 }
 
-class UsbSerialDevice {
-  final String id;
-  final String port;
-
-  UsbSerialDevice({required this.id, required this.port});
+@freezed
+class UsbSerialDevice with _$UsbSerialDevice {
+  factory UsbSerialDevice({
+    required String id,
+    required String port,
+  }) = _UsbSerialDevice;
 }
